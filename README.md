@@ -1,6 +1,8 @@
 # news_app
 
-A new Flutter project.
+Let me give you a brief overview of the project, This app for Show the Top hed-line News in Egypt in 3 field (Busines - sports - science) and the default screen is General news.
+Inaddition to You Can Search About Any New By Name Or Each By Character And User Can Open Any Head-line And Browse It Inside The App .
+Also You Can Browse The News In Two Mode (Light - Dark) Mode .
 
 ## Getting Started
 
