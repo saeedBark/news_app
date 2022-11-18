@@ -15,3 +15,4 @@ Also You Can Browse The News In Two Mode (Light - Dark) Mode .
 - SOLID Principles
 - Responsive UI (DESKTOP, WEB, IOS, ANDROID)
 
+# Screenshots
