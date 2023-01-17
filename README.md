@@ -1,8 +1,6 @@
 # news_app
 
-Let me give you a brief overview of the project, This app for Show the Top hed-line News in Egypt in 3 field (Busines - sports - science) and the default screen is General news.
-Inaddition to You Can Search About Any New By Name Or Each By Character And User Can Open Any Head-line And Browse It Inside The App .
-Also You Can Browse The News In Two Mode (Light - Dark) Mode .
+Let me give you a brief overview of the project, This app for Show the Top headline News in Egypt in 3 fields (Business - sports - science) and the default screen is General news. In addition to You Can Search About Any New By Name Or Each By Character And User Can Open Any Head-line And Browse It Inside The App. Also, You Can Browse The News In Two Mode (Light - Dark) Mode.
 
 ## This Project Created use :
 
@@ -13,7 +11,7 @@ Also You Can Browse The News In Two Mode (Light - Dark) Mode .
 - state Management : Bloc (Cubit).
 - Architecture Design : Model- View - controller (MVC).
 - SOLID Principles
-- Responsive UI (DESKTOP, WEB, IOS, ANDROID)
+- Responsive UI (DESKTOP, WEB, IOS, ANDROID).
 
 # Screenshots
 ![Screenshot_20221114-134140](https://user-images.githubusercontent.com/109968682/202677242-4e21fc88-a9e1-4328-9de8-8faa7fd490ef.jpg)
