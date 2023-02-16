@@ -1,6 +1,6 @@
 // import 'dart:js';
 
-import 'package:conditional_builder/conditional_builder.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/modules/news_app/web_view/web_view_screen.dart';
 import 'package:news_app/shared/cubit/cubit.dart';
@@ -10,14 +10,16 @@ Widget defaultButton({
   double width = double.infinity,
   double raduis = 0,
   bool isUpperCase = true,
-  @required Function() fanction,
-  @required String text,
+  required Function fanction,
+  required String text,
 }) {
   return Container(
     height: 40,
     width: width,
     child: MaterialButton(
-      onPressed: fanction,
+      onPressed: () {
+        fanction();
+      },
       child: Text(
         isUpperCase ? text.toUpperCase() : text,
         style: TextStyle(color: Colors.white),
@@ -31,14 +33,14 @@ Widget defaultButton({
 }
 
 Widget defaultFormFile({
-  @required TextEditingController controller,
-  Function onsubmit,
-  @required Function validator,
-  @required String lable,
-  @required IconData prefix,
-  Function onTap,
-  TextInputType type,
-  IconData suffix,
+  required TextEditingController controller,
+  Function? onsubmit,
+  required Function validator,
+  required String lable,
+  required IconData prefix,
+  Function? onTap,
+  TextInputType? type,
+  IconData? suffix,
   bool enable = true,
   bool isPassword = false,
 }) =>
@@ -46,9 +48,12 @@ Widget defaultFormFile({
       controller: controller,
       obscureText: isPassword,
       keyboardType: type,
-      onFieldSubmitted: onsubmit,
-      validator: validator,
-      onTap: onTap,
+      onFieldSubmitted: (s) {
+        onsubmit!(s);
+      },
+      validator: (s) {
+        validator(s);
+      },
       enabled: enable,
       decoration: InputDecoration(
         labelText: lable,
@@ -117,7 +122,7 @@ Widget bulidTaskItem(Map model, context) => Dismissible(
       },
     );
 
-Widget tasksBuilder({@required List<Map> tasks}) => ConditionalBuilder(
+Widget tasksBuilder({required List<Map> tasks}) => ConditionalBuilder(
       condition: tasks.length > 0,
       builder: (context) => ListView.separated(
           itemBuilder: (context, index) {

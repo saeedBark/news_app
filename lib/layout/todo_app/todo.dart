@@ -1,5 +1,5 @@
 //import 'package:conditional_builder/conditional_builder.dart';
-import 'package:conditional_builder/conditional_builder.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -45,7 +45,7 @@ class HomeLayout extends StatelessWidget {
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 if (cubit.isbuttomSheetshow) {
-                  if (formKey.currentState.validate()) {
+                  if (formKey.currentState!.validate()) {
                     cubit.insertToDatabase(
                       title: titleController.text,
                       time: timeController.text,
@@ -71,7 +71,7 @@ class HomeLayout extends StatelessWidget {
 //                     });
                   }
                 } else {
-                  scaffoldKey.currentState
+                  scaffoldKey.currentState!
                       .showBottomSheet(
                         (context) => Container(
                           color: Colors.white,
@@ -104,7 +104,7 @@ class HomeLayout extends StatelessWidget {
                                         initialTime: TimeOfDay.now(),
                                       ).then((value) {
                                         timeController.text =
-                                            value.format(context).toString();
+                                            value!.format(context).toString();
                                         print(value.format(context));
                                       });
                                     },
@@ -131,7 +131,7 @@ class HomeLayout extends StatelessWidget {
                                       ).then((value) {
 //       print(DateFormat.yMMMd().format(value));
                                         dateController.text =
-                                            DateFormat.yMMMd().format(value);
+                                            DateFormat.yMMMd().format(value!);
                                       });
                                     },
                                     validator: (String value) {

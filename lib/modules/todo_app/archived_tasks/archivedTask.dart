@@ -5,7 +5,7 @@ import 'package:news_app/shared/cubit/cubit.dart';
 import 'package:news_app/shared/cubit/states.dart';
 
 class ArchivedTasksScreen extends StatelessWidget {
-  const ArchivedTasksScreen({Key key}) : super(key: key);
+  const ArchivedTasksScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

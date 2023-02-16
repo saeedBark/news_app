@@ -37,7 +37,7 @@ class NewsCubit extends Cubit<NewsState> {
     DioHolper.getData(url: 'v2/top-headlines', query: {
       'country': 'eg',
       'category': 'business',
-      'apikey': '65f7f556ec76449fa7dc7c0069f040ca',
+      'apikey': 'd6b0614fd5e44ac7889b0105fd6a801e',
     }).then((value) {
       // print(value.data['articles'][0]['title']);
       business = value.data['articles'];
@@ -57,7 +57,7 @@ class NewsCubit extends Cubit<NewsState> {
     DioHolper.getData(url: 'v2/top-headlines', query: {
       'country': 'eg',
       'category': 'sports',
-      'apikey': '65f7f556ec76449fa7dc7c0069f040ca',
+      'apikey': 'd6b0614fd5e44ac7889b0105fd6a801e',
     }).then((value) {
       // print(value.data['articles'][0]['title']);
       sports = value.data['articles'];
@@ -77,7 +77,7 @@ class NewsCubit extends Cubit<NewsState> {
     DioHolper.getData(url: 'v2/top-headlines', query: {
       'country': 'eg',
       'category': 'science',
-      'apikey': '65f7f556ec76449fa7dc7c0069f040ca',
+      'apikey': 'd6b0614fd5e44ac7889b0105fd6a801e',
     }).then((value) {
       // print(value.data['articles'][0]['title']);
       science = value.data['articles'];
@@ -96,7 +96,7 @@ class NewsCubit extends Cubit<NewsState> {
     search = [];
     DioHolper.getData(url: 'v2/everything', query: {
       'q': '$value',
-      'apikey': '65f7f556ec76449fa7dc7c0069f040ca',
+      'apikey': 'd6b0614fd5e44ac7889b0105fd6a801e',
     }).then((value) {
       // print(value.data['articles'][0]['title']);
       search = value.data['articles'];
