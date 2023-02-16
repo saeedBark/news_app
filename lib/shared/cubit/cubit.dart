@@ -11,7 +11,7 @@ import 'package:news_app/shared/cubit/states.dart';
 
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(AppInitialState());
-  Database database;
+late  Database database;
   List<Map> newTasks = [];
   List<Map> doneTasks = [];
   List<Map> archiveTasks = [];
@@ -60,11 +60,11 @@ class AppCubit extends Cubit<AppState> {
   }
 
   insertToDatabase({
-    @required String title,
-    @required String time,
-    @required String date,
+    required String title,
+    required String time,
+    required String date,
   }) async {
-    await database.transaction((txn) {
+    await database.transaction((txn) async{
       txn
           .rawInsert(
               'INSERT INTO tasks (title,date,time,status)VALUES("$title","$date","$time","new")')
@@ -75,7 +75,7 @@ class AppCubit extends Cubit<AppState> {
       }).catchError((error) {
         print('Error when insert ${error.toString()}');
       });
-      return null;
+
     });
   }
 
@@ -100,8 +100,8 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void updateData({
-    @required String status,
-    @required int id,
+    required String status,
+    required int id,
   }) async {
     database.rawUpdate(
       'UPDATE tasks SET status = ?  WHERE id = ?',
@@ -113,7 +113,7 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void deleteData({
-    @required int id,
+    required int id,
   }) async {
     database.rawDelete('DELETE FROM tasks WHERE id = ?', [id]).then((value) {
       getDataFromDatabase(database);
@@ -124,23 +124,30 @@ class AppCubit extends Cubit<AppState> {
   bool isbuttomSheetshow = false;
   IconData fabIcon = Icons.edit;
 
-  void ChangeBottomSheetState(
-      {@required bool isshow, @required IconData icon}) {
+  void ChangeBottomSheetState({
+    required bool isshow,
+    required IconData icon
+  }) {
     isbuttomSheetshow = isshow;
     fabIcon = icon;
     emit(AppChangeSheetState());
   }
 
+
+
+
   bool isDark = false;
-  void changeAppMode(/*{bool fromShared }*/) {
-    // if(fromShared != null)
-    //   isDark = fromShared;
-    // else
+  void changeAppMode({bool? fromShared }) {
+    if(fromShared != null) {
+      isDark = fromShared;
+      emit(AppChangeModeState());
+    }
+    else
     isDark = !isDark;
-    // isDark = !isDark;
-    // CacheHelper.putBoolean(key: 'isDark', value: isDark).then((value) {
-    //   emit(AppChangeModeState());
-    // });
+     CacheHelper.putBoolean(key: 'isDark', value: isDark).then((value) {
+
     emit(AppChangeModeState());
+     });
   }
 }
+ 

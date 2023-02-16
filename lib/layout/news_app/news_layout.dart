@@ -5,7 +5,7 @@ import 'package:news_app/layout/news_app/cubit/cubit.dart';
 import 'package:news_app/layout/news_app/cubit/states.dart';
 import 'package:news_app/modules/news_app/search/search_screen.dart';
 import 'package:news_app/shared/cubit/cubit.dart';
-import 'package:news_app/shared/network/remote/dio_helper.dart';
+
 
 class NewsLayout extends StatelessWidget {
   @override
@@ -16,7 +16,7 @@ class NewsLayout extends StatelessWidget {
         var cubit = NewsCubit.get(context);
         return Scaffold(
           appBar: AppBar(
-            title: Text('New App'),
+            title: Text('New App',style: TextStyle(color: Colors.amber),),
             actions: [
               IconButton(
                   onPressed: () {

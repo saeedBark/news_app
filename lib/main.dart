@@ -13,19 +13,19 @@ import 'package:news_app/styles/themes.dart';
 
 import 'layout/news_app/news_layout.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   DioHolper.init();
-  // CacheHelper.init();
-// bool isDark = CacheHelper.getBoolean(key: 'isDark');
+  await CacheHelper.init();
+  bool? isDark = CacheHelper.getBoolean(key: 'isDark');
 
-  runApp(MyApp());
+  runApp(MyApp(isDark));
 }
 
 class MyApp extends StatelessWidget {
-  // final bool isDark ;
-  // MyApp(this.isDark);
+  bool? isDark;
+  MyApp(this.isDark);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => AppCubit()
             ..changeAppMode(
-                // fromShared : isDark,
-                ),
+              fromShared: isDark,
+            ),
         ),
       ],
       child: BlocConsumer<AppCubit, AppState>(
