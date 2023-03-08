@@ -50,3 +50,5 @@ class NewsGetSearchErrorStste extends NewsState
 
   NewsGetSearchErrorStste(this.error);
 }
+
+class AppChangeModeState extends NewsState{}

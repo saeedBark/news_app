@@ -6,27 +6,26 @@ import 'package:news_app/styles/colors.dart';
 ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   primarySwatch: daufltcolor,
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
       iconTheme: IconThemeData(
         color: Colors.black,
       ),
       titleTextStyle: TextStyle(
           color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
       backgroundColor: Colors.white,
-      backwardsCompatibility: false,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.white,
         statusBarIconBrightness: Brightness.dark,
       ),
       elevation: 0),
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
     selectedItemColor: Colors.amberAccent,
     elevation: 20.0,
     backgroundColor: Colors.white,
   ),
-  textTheme: TextTheme(
-    bodyText1: TextStyle(
+  textTheme: const TextTheme(
+    bodyLarge: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w500,
       color: Colors.black,
@@ -39,16 +38,15 @@ ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: HexColor('333739'),
   primarySwatch: daufltcolor,
   appBarTheme: AppBarTheme(
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: Colors.white,
       ),
-      titleTextStyle: TextStyle(
+      titleTextStyle: const TextStyle(
         color: Colors.white,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
       backgroundColor: HexColor('333739'),
-      backwardsCompatibility: false,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: HexColor('333739'),
         statusBarIconBrightness: Brightness.light,
@@ -61,8 +59,8 @@ ThemeData darkTheme = ThemeData(
     elevation: 20.0,
     backgroundColor: HexColor('333739'),
   ),
-  textTheme: TextTheme(
-    bodyText1: TextStyle(
+  textTheme: const TextTheme(
+    bodyLarge: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w500,
       color: Colors.white,

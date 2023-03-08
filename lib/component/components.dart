@@ -16,18 +16,18 @@ Widget defaultButton({
   return Container(
     height: 40,
     width: width,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(raduis),
+      color: color,
+    ),
     child: MaterialButton(
       onPressed: () {
         fanction();
       },
       child: Text(
         isUpperCase ? text.toUpperCase() : text,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
-    ),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(raduis),
-      color: color,
     ),
   );
 }
@@ -59,97 +59,11 @@ Widget defaultFormFile({
         labelText: lable,
         prefixIcon: Icon(prefix),
         suffixIcon: suffix != null ? Icon(suffix) : null,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
     );
 
-Widget bulidTaskItem(Map model, context) => Dismissible(
-      key: Key(model['id'].toString()),
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Row(
-          children: [
-            CircleAvatar(
-              radius: 40,
-              child: Text('${model['time']}'),
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    '${model['title']}',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    '${model['date']}',
-                    style: TextStyle(fontSize: 18, color: Colors.grey),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            IconButton(
-              onPressed: () {
-                AppCubit.get(context).updateData(
-                  status: 'done',
-                  id: model['id'],
-                );
-              },
-              icon: Icon(Icons.check_box),
-              color: Colors.green,
-            ),
-            IconButton(
-              onPressed: () {
-                AppCubit.get(context).updateData(
-                  status: 'archive',
-                  id: model['id'],
-                );
-              },
-              icon: Icon(Icons.archive),
-              color: Colors.grey,
-            ),
-          ],
-        ),
-      ),
-      onDismissed: (direction) {
-        AppCubit.get(context).deleteData(id: model['id']);
-      },
-    );
 
-Widget tasksBuilder({required List<Map> tasks}) => ConditionalBuilder(
-      condition: tasks.length > 0,
-      builder: (context) => ListView.separated(
-          itemBuilder: (context, index) {
-            return bulidTaskItem(tasks[index], context);
-          },
-          separatorBuilder: (context, index) => MyDiver(),
-          itemCount: tasks.length),
-      fallback: (context) => Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.menu,
-              size: 100,
-              color: Colors.grey,
-            ),
-            Text(
-              'No Taks Yet, Please Add Some Tasks',
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey),
-            ),
-          ],
-        ),
-      ),
-    );
 
 Widget builderArchveItem(article, context) => InkWell(
       onTap: () {
@@ -172,7 +86,7 @@ Widget builderArchveItem(article, context) => InkWell(
                     fit: BoxFit.cover),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             Expanded(
@@ -191,7 +105,7 @@ Widget builderArchveItem(article, context) => InkWell(
                     ),
                     Text(
                       '${article['publishedAt']}',
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),
@@ -213,14 +127,14 @@ Widget MyDiver() => Padding(
 Widget articleBuilder(list, context, {issearch = false}) => ConditionalBuilder(
       condition: list.length > 0,
       builder: (context) => ListView.separated(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) =>
             builderArchveItem(list[index], context),
         separatorBuilder: (context, index) => MyDiver(),
         itemCount: 10,
       ),
       fallback: (context) =>
-          issearch ? Container() : Center(child: CircularProgressIndicator()),
+          issearch ? Container() : const Center(child: CircularProgressIndicator()),
     );
 
 void navigatorTo(context, Widget) => Navigator.push(
